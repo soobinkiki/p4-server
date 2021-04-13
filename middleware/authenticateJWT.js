@@ -7,8 +7,8 @@ const authenticateJWT = async (req, res, next) => {
         // console.log(req.headers.authorization)
 
         const authHeader = req.headers.authorization
-        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', authHeader);
-        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', process.env.JWT_SECRET);
+        // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', authHeader);
+        // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', process.env.JWT_SECRET);
         const decode = jwt.verify(authHeader, process.env.JWT_SECRET)
         const foundUser = await User.findById(decode._id)
         
@@ -16,7 +16,7 @@ const authenticateJWT = async (req, res, next) => {
         // console.log(authHeader, decode, foundUser)
 
         res.locals.user = foundUser
-        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaa', foundUser);
+        // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaa', foundUser);
         next()
 
     } catch (error) {

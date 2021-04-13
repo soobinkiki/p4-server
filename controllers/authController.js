@@ -42,7 +42,7 @@ router.get('/github/callback',
     githubPassport.authenticate('github', { failureRedirect: '/auth/github', session: false }),
     function (req, res) {
         // Successful authentication
-        console.log("The user data!", req.user) // The user data we get from github!
+        // console.log("The user data!", req.user) // The user data we get from github!
 
         const payload = {
             _id: req.user._id,
@@ -70,7 +70,7 @@ router.get('/facebook/callback',
     facebookPassport.authenticate('facebook', { failureRedirect: '/auth/facebook', session: false }),
     function (req, res) {
         // Successful authentication
-        console.log("The user data!", req.user) // The user data we get from facebook!
+        // console.log("The user data!", req.user) // The user data we get from facebook!
         const payload = {
             _id: req.user._id,
             provider: req.user.provider,
