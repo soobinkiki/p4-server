@@ -24,7 +24,9 @@ router.get('/google/callback',
                 givenName: req.user.name.givenName,
                 middleName: req.user.name.middleName
             },
-            photos: req.user.photos
+            photos: req.user.photos,
+            best_score: req.user.best_score
+            
         }
         // console.log('the payload', payload)
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 36000000000 })

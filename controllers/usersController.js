@@ -2,6 +2,17 @@ const router = require('express').Router()
 const authenticateJWT = require('../middleware/authenticateJWT')
 const User = require('../models/User.js')
 
+router.get('/', authenticateJWT, async (req, res) => {
+    try {
+        const loggedInUser = await User.findById(res.locals.user.id)
+        
+        res.json({ userInfo: loggedInUser})
+    
+    } catch(err) {
+        console.log(err);
+    }
+}) 
+
 router.post('/score/', authenticateJWT, async (req, res) => {
     try {
         const loggedInUser = await User.findById(res.locals.user.id) // // what is current user
@@ -22,5 +33,7 @@ router.post('/score/', authenticateJWT, async (req, res) => {
         console.log(err);
     }
 })
+
+
 
 module.exports = router
