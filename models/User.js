@@ -23,8 +23,13 @@ const UserSchema = new mongoose.Schema({
     photos: [{
         value: String
     }],
+    best_score: {
+        type: Number
+    }
 }, {
     timestamps: true
 })
 
-module.exports = User = mongoose.model('user', UserSchema)
+const User = mongoose.model('user', UserSchema)
+
+module.exports = User

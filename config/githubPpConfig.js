@@ -27,7 +27,8 @@ passport.use(new Strategy({
                 name: {
                     givenName: profile.displayName,
                 },
-                photos: profile.photos
+                photos: profile.photos,
+                best_score: 0
             })
             // console.log('New user saved in database', newUser)
             
