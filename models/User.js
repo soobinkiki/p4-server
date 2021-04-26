@@ -25,6 +25,12 @@ const UserSchema = new mongoose.Schema({
     }],
     best_score: {
         type: Number
+    },
+    game_played: {
+        type: Number
+    },
+    win_count: {
+        type: Number
     }
 }, {
     timestamps: true

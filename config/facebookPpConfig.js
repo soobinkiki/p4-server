@@ -15,7 +15,6 @@ passport.use(new Strategy({
     console.log('The user from our database', user)
     // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
     //   return cb(err, user);
-    
   }
 ))
 

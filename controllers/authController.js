@@ -11,8 +11,6 @@ router.get('/google/callback',
     // We're not using sessions, use session: false!
     googlePassport.authenticate('google', { failureRedirect: '/auth/google', session: false }),
     function (req, res) {
-        // Successful authentication
-        // console.log("The user data!", req.user) // The user data we get from google!
 
         const payload = {
             _id: req.user._id,
@@ -25,7 +23,9 @@ router.get('/google/callback',
                 middleName: req.user.name.middleName
             },
             photos: req.user.photos,
-            best_score: req.user.best_score
+            best_score: req.user.best_score,
+            win_count: req.user.win_count,
+            game_played: req.user.game_played
             
         }
         // console.log('the payload', payload)
@@ -43,8 +43,6 @@ router.get('/github', githubPassport.authenticate('github', { scope: ['read:user
 router.get('/github/callback',
     githubPassport.authenticate('github', { failureRedirect: '/auth/github', session: false }),
     function (req, res) {
-        // Successful authentication
-        // console.log("The user data!", req.user) // The user data we get from github!
 
         const payload = {
             _id: req.user._id,
@@ -56,7 +54,10 @@ router.get('/github/callback',
                 givenName: req.user.name.givenName,
                 middleName: req.user.name.middleName
             },
-            photos: req.user.photos
+            photos: req.user.photos,
+            best_score: req.user.best_score,
+            win_count: req.user.win_count,
+            game_played: req.user.game_played
         }
         // console.log('the payload', payload)
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 36000000000 })
@@ -71,8 +72,6 @@ router.get('/facebook', facebookPassport.authenticate('facebook', { scope: ['rea
 router.get('/facebook/callback',
     facebookPassport.authenticate('facebook', { failureRedirect: '/auth/facebook', session: false }),
     function (req, res) {
-        // Successful authentication
-        // console.log("The user data!", req.user) // The user data we get from facebook!
         const payload = {
             _id: req.user._id,
             provider: req.user.provider,

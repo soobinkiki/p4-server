@@ -17,23 +17,20 @@ router.post('/score/', authenticateJWT, async (req, res) => {
     try {
         const loggedInUser = await User.findById(res.locals.user.id) // // what is current user
 
-        console.log(loggedInUser.best_score);
-        console.log(req.body.current_score);
-
+        
         if (req.body.current_score > loggedInUser.best_score) {
             const updateBestScore = await User.findOneAndUpdate(
                 { provider_id: loggedInUser.provider_id },
                 { best_score: req.body.current_score }
             )
         }
+
         const findUser = await User.find({ provider_id: loggedInUser.provider_id })
-        
+        console.log(findUser);
         res.json({ findUser: findUser})
     } catch(err) {
         console.log(err);
     }
 })
-
-
 
 module.exports = router
