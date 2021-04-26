@@ -15,7 +15,7 @@ const User = require('../models/User')
 passport.use(new Strategy({
     clientID: process.env['GOOGLE_CLIENT_ID'],
     clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
-    callbackURL: `http://puzzle-2048.herokuapp.com/auth/google/callback`
+    callbackURL: `https://puzzle-2048.herokuapp.com/auth/google/callback`
 },
     async function (accessToken, refreshToken, profile, cb) {
         // profile is the Google User object we get from Google
