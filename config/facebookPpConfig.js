@@ -5,7 +5,7 @@ const User = require('../models/User')
 passport.use(new Strategy({
     clientID: process.env['FACEBOOK_CLIENT_ID'],
     clientSecret: process.env['FACEBOOK_CLIENT_SECRET'],
-    callbackURL: `https://puzzle-2048.herokuapp.com/auth/facebook/callback`
+    callbackURL: `/auth/facebook/callback`
   },
   async function(accessToken, refreshToken, profile, cb) {
     const user = await User.findOne({

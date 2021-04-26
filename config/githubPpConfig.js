@@ -9,7 +9,7 @@ const User = require('../models/User')
 passport.use(new Strategy({
     clientID: process.env['GITHUB_CLIENT_ID'],
     clientSecret: process.env['GITHUB_CLIENT_SECRET'],
-    callbackURL: `https://puzzle-2048.herokuapp.com/auth/github/callback`
+    callbackURL: `/auth/github/callback`
 },
     async function (accessToken, refreshToken, profile, cb) {
         // profile is the Github User object we get from Github
