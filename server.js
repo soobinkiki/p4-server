@@ -21,7 +21,7 @@ app.use(cors())
 app.use(passport.initialize())
 
 // Controllers
-app.use('/auth', require('./controllers/authController'))
+app.use('https://puzzle-2048.herokuapp.com/auth', require('./controllers/authController'))
 // app.use('/exampleResource', require('./controllers/usersController'))
 app.use('/api-v1/users', require('./controllers/usersController'))
 
