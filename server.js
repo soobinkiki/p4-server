@@ -9,7 +9,7 @@ const passport = require('passport')
 
 // Variables
 const app = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8000
 const rowdyResults = rowdy.begin(app)
 
 // Middleware
@@ -21,7 +21,7 @@ app.use(cors())
 app.use(passport.initialize())
 
 // Controllers
-app.use('https://puzzle-2048.herokuapp.com/auth', require('./controllers/authController'))
+app.use('/auth', require('./controllers/authController'))
 // app.use('/exampleResource', require('./controllers/usersController'))
 app.use('/api-v1/users', require('./controllers/usersController'))
 
